@@ -1,0 +1,28 @@
+server:
+  port: 8083
+
+logging:
+  level:
+    ROOT: ${LOG_LEVEL:debug}
+    org.hibernate.tool.hbm2ddl: ${LOG_LEVEL:debug}
+    org.hibernate.SQL: ${LOG_LEVEL:debug}
+    org.hibernate.type.descriptor.sql: ${LOG_LEVEL:debug}
+
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=master;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: P@ssw0rd
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 5
+      connection-timeout: 20000
+    initialization-mode: never
+
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect
+    hibernate:
+      ddl-auto: create-drop # Values: none, create, create-drop, validate, update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
