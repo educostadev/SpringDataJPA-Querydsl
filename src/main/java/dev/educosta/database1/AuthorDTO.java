@@ -3,14 +3,14 @@ package dev.educosta.database1;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "books", schema = "dbo")
-@Entity(name = "books")
+@Table(name = "authors", schema = "dbo")
+@Entity(name = "authors")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
-public class BookDTO {
+public class AuthorDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,4 @@ public class BookDTO {
 
     @Column(name = "name")
     private String name;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private AuthorDTO author;
-
 }
